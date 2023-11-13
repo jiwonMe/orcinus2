@@ -146,7 +146,6 @@ const TitleBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-left: 18px;
   margin-bottom: 28px;
   gap: 4px;
 
