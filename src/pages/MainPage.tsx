@@ -35,7 +35,7 @@ const MainPage = () => {
               <VerticalSpace size={120} />
               <DescriptionBox>
                 <Description>
-                  본 서비스는 공군기본군사훈련단(www.airforce.mil.kr)의 인터넷 편지 기능을 모바일에서 보다 편리하게 사용할 수 있도록 도와주는 서비스입니다.
+                  본 서비스는 공군기본군사훈련단의 인터넷 편지 기능을 모바일에서 보다 편리하게 사용할 수 있도록 도와주는 서비스입니다.
                   어떠한 개인정보도 개발자가 저장하거나 열람할 수 없습니다. 모든 코드는 오픈소스로 공개되어 있습니다. (<a href="https://github.com/jiwonMe/orcinus2">GitHub 공개 레포지토리</a>)
                 </Description>
               </DescriptionBox>
