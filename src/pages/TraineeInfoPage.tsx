@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Button from '../components/Button';
-import { Description, Heading3 } from '../designs/typographys';
+import { Description, Heading2, Heading3 } from '../designs/typographys';
+import { FiMail } from 'react-icons/fi';
+import VerticalSpace from '../components/VerticalSpace';
 
 interface TraineeInfoPageProps {
   addStep: () => void;
@@ -10,8 +12,14 @@ const TraineeInfoPage = (props: TraineeInfoPageProps) => {
 
   return (
     <TraineeInfoPageLayout>
+      <VerticalSpace size={120} />
       <TitleBox>
-        <Heading3>{import.meta.env.VITE_TRAINEE_NAME} 훈련생에게 편지를 작성합니다</Heading3>
+        <FiMail size={36} />
+        <VerticalSpace size={16} />
+        <Heading2>
+          <span className='trainee-name'>
+          {import.meta.env.VITE_TRAINEE_NAME}{' '}
+          </span>훈련생에게 <br /> 편지를 작성합니다</Heading2>
         <Description>생년월일 및 소속, 입대날짜를 확인해주세요</Description>
       </TitleBox>
       <DescriptionBox>
@@ -48,11 +56,27 @@ const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
 
+  justify-content: center;
+  align-items: center;
+
   margin-bottom: 28px;
   gap: 4px;
+
+
+  text-align: center;
+
+  .trainee-name {
+    color: ${({ theme }) => theme.colors.blue300};
+    font-weight: bold;
+  }
 `;
 
 const TraineeInfoPageLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
   ${Button} {
     position: absolute;
     bottom: 0;
@@ -66,11 +90,13 @@ const TraineeInfoPageLayout = styled.div`
 const DescriptionBox = styled.div`
   background-color: ${({ theme }) => theme.colors.gray50};
   border-radius: 16px;
-  padding: 16px;
+  padding: 24px;
   margin-bottom: 8px;
 
+  width: 100%;
+
   ${Description} {
-    line-height: 1.5;
+    line-height: 1.8;
     color: ${({ theme }) => theme.colors.gray700};
   }
 `;

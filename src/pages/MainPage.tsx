@@ -9,6 +9,7 @@ import SetPasswordPage from './SetPasswordPage';
 import FinishPage from './FinishPage';
 import submitEmail from '../api/submitEmail';
 import useAppStore from '../store/appStore';
+import VerticalSpace from '../components/VerticalSpace';
 
 const MainPage = () => {
 
@@ -26,8 +27,12 @@ const MainPage = () => {
         currentStep === 0 && (
           <>
             <TitleBox>
-              <Heading2>Oricinus</Heading2>
-              <Description>공군기초군사훈련단 인터넷 편지</Description>
+              <Description>jiwon.me 사이드프로젝트</Description>
+              <LogoImage src="/orcinus-logo.png" />
+              <Description
+                className="title-description"
+              >공군기초군사훈련단 인터넷 편지</Description>
+              <VerticalSpace size={120} />
             </TitleBox>
             <Button
               variant="primary"
@@ -60,21 +65,26 @@ const MainPage = () => {
       {
         currentStep === 4 && (
           <SetPasswordPage
-            addStep={() => {
-              setCurrentStep(5);
+            addStep={async () => {
               
-              submitEmail({
-                senderZipCode: appState.senderZipCode,
-                senderAddr1: appState.senderAddr1,
-                senderAddr2: appState.senderAddr2,
-                senderName: appState.senderName,
-                relationship: appState.relationship,
-                title: appState.title,
-                contents: appState.contents,
-                password: appState.password,
-              });
+              try {
+                await submitEmail({
+                  senderZipCode: appState.senderZipCode,
+                  senderAddr1: appState.senderAddr1,
+                  senderAddr2: appState.senderAddr2,
+                  senderName: appState.senderName,
+                  relationship: appState.relationship,
+                  title: appState.title,
+                  contents: appState.contents,
+                  password: appState.password,
+                });
 
-              appState.reset();
+                appState.reset();
+                setCurrentStep(5);
+              } catch (e) {
+                alert('전송에 실패했습니다. 다시 시도해주세요.');
+                setCurrentStep(4);
+              }
             }}
             />
         )
@@ -122,13 +132,28 @@ const MainPageLayout = styled.div`
   }
 `;
 
+const LogoImage = styled.img`
+  width: 180px;
+  height: auto;
+`;
+
 const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
 
+  justify-content: center;
+  align-items: center;
+
   margin-left: 18px;
   margin-bottom: 28px;
   gap: 4px;
+
+  height: 100%;
+
+  .title-description {
+    color: ${({ theme }) => theme.colors.gray700};
+    font-weight: 500;
+  }
 `;
 
 export default MainPage;

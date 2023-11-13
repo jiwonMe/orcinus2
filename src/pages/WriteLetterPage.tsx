@@ -46,11 +46,13 @@ const WriteLetter = (props: WriteLetterProps) => {
         onChange={(e) => {
           setContent(e.target.value);
         }}
+        maxLength={1100}
       />
   
       <Button
         variant="primary"
         onClick={props.addStep}
+        disabled={title.length === 0 || content.length === 0}
       >다음</Button>
     </WriteLetterLayout>
   )

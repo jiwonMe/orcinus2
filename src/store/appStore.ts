@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 export interface AppStore {
   senderName: string;
@@ -22,36 +23,38 @@ export interface AppStore {
   reset: () => void;
 }
 
-const useAppStore = create<AppStore>((set) => ({
-  senderName: '',
-  senderZipCode: '',
-  senderAddr1: '',
-  senderAddr2: '',
-  relationship: '',
-  title: '',
-  contents: '',
-  password: '',
+const useAppStore = create<AppStore>()(
+  devtools((set) => ({
+    senderName: '',
+    senderZipCode: '',
+    senderAddr1: '',
+    senderAddr2: '',
+    relationship: '',
+    title: '',
+    contents: '',
+    password: '',
 
-  setSenderName: (senderName: string) => set(() => ({ senderName })),
-  setSenderZipCode: (senderZipCode: string) => set(() => ({ senderZipCode })),
-  setSenderAddr1: (senderAddr1: string) => set(() => ({ senderAddr1 })),
-  setSenderAddr2: (senderAddr2: string) => set(() => ({ senderAddr2 })),
-  setRelationship: (relationship: string) => set(() => ({ relationship })),
-  setTitle: (title: string) => set(() => ({ title })),
-  setContents: (contents: string) => set(() => ({ contents })),
-  setPassword: (password: string) => set(() => ({ password })),
+    setSenderName: (senderName: string) => set(() => ({ senderName })),
+    setSenderZipCode: (senderZipCode: string) => set(() => ({ senderZipCode })),
+    setSenderAddr1: (senderAddr1: string) => set(() => ({ senderAddr1 })),
+    setSenderAddr2: (senderAddr2: string) => set(() => ({ senderAddr2 })),
+    setRelationship: (relationship: string) => set(() => ({ relationship })),
+    setTitle: (title: string) => set(() => ({ title })),
+    setContents: (contents: string) => set(() => ({ contents })),
+    setPassword: (password: string) => set(() => ({ password })),
 
-  reset: () =>
-    set(() => ({
-      senderName: '',
-      senderZipCode: '',
-      senderAddr1: '',
-      senderAddr2: '',
-      relationship: '',
-      title: '',
-      contents: '',
-      password: '',
-    })),
-}));
+    reset: () =>
+      set(() => ({
+        senderName: '',
+        senderZipCode: '',
+        senderAddr1: '',
+        senderAddr2: '',
+        relationship: '',
+        title: '',
+        contents: '',
+        password: '',
+      })),
+  }))
+);
 
 export default useAppStore;

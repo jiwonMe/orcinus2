@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export interface TextareaProps {
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   disabled?: boolean;
   placeholder?: string;
   value?: string;

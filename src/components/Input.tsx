@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export interface InputProps {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>{
   disabled?: boolean;
   placeholder?: string;
   type?: string;
