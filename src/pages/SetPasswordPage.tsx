@@ -8,12 +8,15 @@ import TextArea from '../components/TextArea';
 import useAppStore from '../store/appStore';
 
 import { FiLock } from 'react-icons/fi';
+import { useState } from 'react';
 
 interface SetPasswordPageProps {
   addStep: () => void;
 }
 
 const SetPasswordPage = (props: SetPasswordPageProps) => {
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  
   const { password, setPassword } = useAppStore();
 
   return (
@@ -40,9 +43,14 @@ const SetPasswordPage = (props: SetPasswordPageProps) => {
 
       <Button
         variant="primary"
-        onClick={props.addStep}
-        disabled={password.length < 4}
-      >작성 완료</Button>
+        onClick={() => {
+          setButtonDisabled(true);
+          props.addStep()
+      }}
+        disabled={password.length < 4 || buttonDisabled}
+      >{
+        buttonDisabled ? '전송 중' : '작성완료'
+      }</Button>
     </SetPasswordPageLayout>
   )
 }

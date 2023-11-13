@@ -11,6 +11,7 @@ interface FinishPageProps {
 }
 
 const FinishPage = (props: FinishPageProps) => {
+
   return (
     <FinishPageLayout>
       <VerticalSpace size={100} />
