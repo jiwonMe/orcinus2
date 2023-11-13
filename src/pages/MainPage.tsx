@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Description, Heading2 } from '../designs/typographys';
 import Button from '../components/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TraineeInfoPage from './TraineeInfoPage';
 import UserInfoPage from './UserInfoPage';
 import WriteLetterPage from './WriteLetterPage';
