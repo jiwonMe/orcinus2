@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import Button from '../components/Button';
-import { Description, Heading3 } from '../designs/typographys';
+import { Description, Heading2 } from '../designs/typographys';
 import TextArea from '../components/TextArea';
+import VerticalSpace from '../components/VerticalSpace';
+
+import { FiCheckCircle } from 'react-icons/fi';
 
 interface FinishPageProps {
   addStep: () => void;
@@ -10,8 +13,11 @@ interface FinishPageProps {
 const FinishPage = (props: FinishPageProps) => {
   return (
     <FinishPageLayout>
+      <VerticalSpace size={100} />
       <TitleBox>
-        <Heading3>편지 전송이 완료되었습니다</Heading3>
+        <FiCheckCircle size={36} />
+        <VerticalSpace size={16} />
+        <Heading2>편지 전송이 완료되었습니다</Heading2>
         <Description>일반적으로 1~2일 이내에 전달됩니다</Description>
       </TitleBox>
 
@@ -29,7 +35,19 @@ const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
 
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 28px;
   gap: 4px;
+
+
+  text-align: center;
+
+  b {
+    color: ${({ theme }) => theme.colors.blue300};
+    font-weight: bold;
+  }
 `;
 
 const FinishPageLayout = styled.div`

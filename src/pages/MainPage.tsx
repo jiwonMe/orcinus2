@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Description, Heading2 } from '../designs/typographys';
+import { Description } from '../designs/typographys';
 import Button from '../components/Button';
 import { useState } from 'react';
 import TraineeInfoPage from './TraineeInfoPage';
@@ -31,8 +31,14 @@ const MainPage = () => {
               <LogoImage src="/orcinus-logo.png" />
               <Description
                 className="title-description"
-              >공군기초군사훈련단 인터넷 편지</Description>
+              >공군기본군사훈련단 인터넷 편지</Description>
               <VerticalSpace size={120} />
+              <DescriptionBox>
+                <Description>
+                  본 서비스는 공군기본군사훈련단(www.airforce.mil.kr)의 인터넷 편지 기능을 모바일에서 보다 편리하게 사용할 수 있도록 도와주는 서비스입니다.
+                  어떠한 개인정보도 개발자가 저장하거나 열람할 수 없습니다. 모든 코드는 오픈소스로 공개되어 있습니다. (<a href="https://github.com/jiwonMe/orcinus2">GitHub 공개 레포지토리</a>)
+                </Description>
+              </DescriptionBox>
             </TitleBox>
             <Button
               variant="primary"
@@ -119,7 +125,7 @@ const MainPageLayout = styled.div`
   }
 
   ${Button} {
-    position: absolute;
+    position: fixed;
     bottom: 0;
 
     /* center */
@@ -127,6 +133,8 @@ const MainPageLayout = styled.div`
     transform: translateX(-50%);
 
     width: calc(100% - 72px);
+
+    max-width: calc(500px - 72px);
 
     margin-bottom: 60px;
   }
@@ -153,6 +161,25 @@ const TitleBox = styled.div`
   .title-description {
     color: ${({ theme }) => theme.colors.gray700};
     font-weight: 500;
+  }
+`;
+
+const DescriptionBox = styled.div`
+  word-break: keep-all;
+  text-align: justify;
+
+  box-sizing: border-box;
+
+  background-color: ${({ theme }) => theme.colors.gray50};
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 8px;
+
+  width: 100%;
+
+  ${Description} {
+    line-height: 1.8;
+    color: ${({ theme }) => theme.colors.gray700};
   }
 `;
 

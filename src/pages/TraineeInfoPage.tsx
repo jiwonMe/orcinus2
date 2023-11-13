@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Button from '../components/Button';
-import { Description, Heading2, Heading3 } from '../designs/typographys';
+import { Description, Heading2 } from '../designs/typographys';
 import { FiMail } from 'react-icons/fi';
 import VerticalSpace from '../components/VerticalSpace';
 
@@ -88,6 +88,8 @@ const TraineeInfoPageLayout = styled.div`
 `;
 
 const DescriptionBox = styled.div`
+  box-sizing: border-box;
+
   background-color: ${({ theme }) => theme.colors.gray50};
   border-radius: 16px;
   padding: 24px;

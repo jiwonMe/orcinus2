@@ -22,13 +22,12 @@ const StyledTextarea = styled.textarea<TextareaProps>`
   padding: 12px 16px; // Padding inside the textarea
 
   border-radius: 16px; // Match the Button border-radius
-  border: 1px solid ${({ theme, disabled }) => disabled ? theme.colors.gray300 : theme.colors.blue500};
-  background-color: ${({ theme, disabled }) => disabled ? theme.colors.gray100 : theme.colors.white};
-  color: ${({ theme, disabled }) => disabled ? theme.colors.gray500 : theme.colors.text};
+  border: none;
+  background-color: ${({ theme }) => theme.colors.gray50};
+  color: ${({ theme, disabled }) => disabled ? theme.colors.gray500 : theme.colors.gray700};
 
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.colors.blue300}; // Focus state border color
   }
 
   &:disabled {

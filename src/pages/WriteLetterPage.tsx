@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import Button from '../components/Button';
-import { Description, Heading3 } from '../designs/typographys';
+import { Description, Heading2 } from '../designs/typographys';
 import Input from '../components/Input';
 import VerticalSpace from '../components/VerticalSpace';
 
 import TextArea from '../components/TextArea';
 import useAppStore from '../store/appStore';
+
+import { FiPenTool } from 'react-icons/fi';
 
 interface WriteLetterProps {
   addStep: () => void;
@@ -19,8 +21,11 @@ const WriteLetter = (props: WriteLetterProps) => {
 
   return (
     <WriteLetterLayout>
+      <VerticalSpace size={50} />
       <TitleBox>
-        <Heading3>편지를 작성해주세요</Heading3>
+        <FiPenTool size={36} />
+        <VerticalSpace size={16} />
+        <Heading2><b>편지</b>를 작성해주세요</Heading2>
         <Description>부적절한 내용은 전달되지 않을 수 있습니다</Description>
       </TitleBox>
 
@@ -48,6 +53,8 @@ const WriteLetter = (props: WriteLetterProps) => {
         }}
         maxLength={1100}
       />
+
+      <VerticalSpace size={200} />
   
       <Button
         variant="primary"
@@ -64,12 +71,24 @@ const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
 
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 28px;
   gap: 4px;
+
+
+  text-align: center;
+
+  b {
+    color: ${({ theme }) => theme.colors.blue300};
+    font-weight: bold;
+  }
 `;
 
 const WriteLetterLayout = styled.div`
   ${Button} {
-    position: absolute;
+    position: fixed;
     bottom: 0;
 
     /* center */

@@ -19,13 +19,13 @@ const StyledInput = styled.input<InputProps>`
   box-sizing: border-box;
 
   width: 100%;
-  height: 40px; // Adjust height as needed to align with Button height
+  height: 60px; // Adjust height as needed to align with Button height
   padding: 0 16px; // Padding inside the input
 
   border-radius: 16px; // Match the Button border-radius
-  border: 1px solid ${({ theme, disabled }) => disabled ? theme.colors.gray300 : theme.colors.blue500};
-  background-color: ${({ theme, disabled }) => disabled ? theme.colors.gray100 : theme.colors.white};
-  color: ${({ theme, disabled }) => disabled ? theme.colors.gray300 : theme.colors.text};
+  border: none;
+  background-color: ${({ theme }) => theme.colors.gray50};
+  color: ${({ theme }) => theme.colors.gray700};
 
   &:focus {
     outline: none;
@@ -34,7 +34,7 @@ const StyledInput = styled.input<InputProps>`
 
   &:disabled {
     background-color: ${({ theme }) => theme.colors.gray100};
-    color: ${({ theme }) => theme.colors.gray500};
+    color: ${({ theme }) => theme.colors.gray700};
   }
 
   &::placeholder {
