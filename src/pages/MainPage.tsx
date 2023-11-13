@@ -72,7 +72,6 @@ const MainPage = () => {
         currentStep === 4 && (
           <SetPasswordPage
             addStep={async () => {
-
                 await submitEmail({
                   senderZipCode: appState.senderZipCode,
                   senderAddr1: appState.senderAddr1,

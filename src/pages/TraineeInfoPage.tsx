@@ -44,7 +44,17 @@ const TraineeInfoPage = (props: TraineeInfoPageProps) => {
       </Description>
       <Button
         variant="primary"
-        onClick={props.addStep}
+        onClick={() => {
+          // if over 2023-11-29 17:00:00, show alert
+          const now = new Date();
+          const target = new Date('2023-11-29 17:00:00');
+          if (now > target) {
+            alert('편지 작성이 마감되었습니다');
+            return;
+          }
+
+          props.addStep();
+        }}
       >다음</Button>
     </TraineeInfoPageLayout>
   )
