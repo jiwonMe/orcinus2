@@ -1,5 +1,14 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { Description } from '../designs/typographys';
 
+const MainPage = () => {
+
+  return (
+    <MainPageLayout>
+      main page
+    </MainPageLayout>
+  )
+}
 
 const MainPageLayout = styled.div`
   position: relative;
@@ -50,3 +59,5 @@ const QuizCardContainer = styled.div`
 
   gap: 12px;
 `;
+
+export default MainPage;
