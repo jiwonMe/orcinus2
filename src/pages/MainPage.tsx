@@ -72,8 +72,7 @@ const MainPage = () => {
         currentStep === 4 && (
           <SetPasswordPage
             addStep={async () => {
-              
-              try {
+
                 await submitEmail({
                   senderZipCode: appState.senderZipCode,
                   senderAddr1: appState.senderAddr1,
@@ -87,10 +86,6 @@ const MainPage = () => {
 
                 appState.reset();
                 setCurrentStep(5);
-              } catch (e) {
-                alert('전송에 실패했습니다. 다시 시도해주세요.');
-                setCurrentStep(4);
-              }
             }}
             />
         )
