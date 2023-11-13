@@ -3,16 +3,19 @@ import Button from '../components/Button';
 import { Description, Heading3 } from '../designs/typographys';
 import Input from '../components/Input';
 import VerticalSpace from '../components/VerticalSpace';
-import { useState } from 'react';
+
 import TextArea from '../components/TextArea';
+import useAppStore from '../store/appStore';
 
 interface WriteLetterProps {
   addStep: () => void;
 }
 
 const WriteLetter = (props: WriteLetterProps) => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const {
+    title, setTitle,
+    contents: content, setContents: setContent,
+  } = useAppStore();
 
   return (
     <WriteLetterLayout>

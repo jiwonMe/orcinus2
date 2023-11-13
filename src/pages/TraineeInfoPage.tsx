@@ -7,6 +7,7 @@ interface TraineeInfoPageProps {
 }
 
 const TraineeInfoPage = (props: TraineeInfoPageProps) => {
+
   return (
     <TraineeInfoPageLayout>
       <TitleBox>

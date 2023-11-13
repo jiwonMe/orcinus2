@@ -3,17 +3,20 @@ import Button from '../components/Button';
 import { Description, Heading3 } from '../designs/typographys';
 import Input from '../components/Input';
 import VerticalSpace from '../components/VerticalSpace';
-import { useState } from 'react';
+import useAppStore from '../store/appStore';
 
 interface UserInfoPageProps {
   addStep: () => void;
 }
 
 const UserInfoPage = (props: UserInfoPageProps) => {
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [addressDetail, setAddressDetail] = useState('');
-  const [relationship, setRelationship] = useState('');
+  const {
+    senderName: name, setSenderName: setName,
+    senderAddr1: address, setSenderAddr1: setAddress,
+    senderAddr2: addressDetail, setSenderAddr2: setAddressDetail,
+    relationship, setRelationship,
+  } = useAppStore();
+
 
   return (
     <UserInfoPageLayout>
