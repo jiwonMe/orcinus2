@@ -12,9 +12,9 @@ const colors: ThemeColors = {
   gray700: '#434343',
   gray900: '#212121',
 
-  green100: '#CCF4EA',
-  green300: '#66DEC0',
-  green500: '#00C896',
+  blue100: '#5E9FF1',
+  blue300: '#056BF1',
+  blue500: '#0540F2',
 
   red100: '#FFD5E1',
   red500: '#FF2C6B',

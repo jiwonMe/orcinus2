@@ -1,11 +1,16 @@
 import styled from 'styled-components';
-import { Description } from '../designs/typographys';
+import { Description, Heading2 } from '../designs/typographys';
+import Button from '../components/Button';
 
 const MainPage = () => {
 
   return (
     <MainPageLayout>
-      main page
+      <TitleBox>
+        <Heading2>Oricinus</Heading2>
+        <Description>공군기초군사훈련단 인터넷 편지</Description>
+      </TitleBox>
+      <Button variant="primary">시작하기</Button>
     </MainPageLayout>
   )
 }
@@ -25,25 +30,6 @@ const MainPageLayout = styled.div`
   }
 `;
 
-const ProfileBox = styled.div`
-  position: absolute;
-  top: 36px;
-  right: 36px;
-
-  width: 48px;
-  height: 48px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 16px;
-
-  &:active {
-    background-color: ${({ theme }) => theme.colors.gray50};
-  }
-`;
-
 const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,13 +37,6 @@ const TitleBox = styled.div`
   margin-left: 18px;
   margin-bottom: 28px;
   gap: 4px;
-`;
-
-const QuizCardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  gap: 12px;
 `;
 
 export default MainPage;

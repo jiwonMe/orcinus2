@@ -43,12 +43,12 @@ const ButtonLayout = styled.button<{
               color: ${theme.colors.gray300};
             `
         : css`
-              background-color: ${theme.colors.green500};
+              background-color: ${theme.colors.blue500};
               border: none;
               color: ${theme.colors.white};
 
               &:active {
-                background-color: ${theme.colors.green300};
+                background-color: ${theme.colors.blue300};
               }
             `;
     case 'secondary':
@@ -60,11 +60,11 @@ const ButtonLayout = styled.button<{
             `
         : css`
               background-color: transparent;
-              border: 1px solid ${theme.colors.green500};
-              color: ${theme.colors.green500};
+              border: 1px solid ${theme.colors.blue500};
+              color: ${theme.colors.blue500};
 
               &:active {
-                background-color: ${theme.colors.green100};
+                background-color: ${theme.colors.blue100};
               }
             `;
     }
