@@ -30,7 +30,7 @@ const ButtonLayout = styled.button<{
   width: 100%;
   height: 48px;
 
-  border-radius: 8px;
+  border-radius: 16px;
 
   ${({ variant, disabled, theme }) => {
     switch (variant) {
