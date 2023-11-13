@@ -48,14 +48,3 @@ const FinishPageLayout = styled.div`
   }
 `;
 
-const InputLabel = styled(Description)`
-  display: flex;
-  flex-direction: column;
-
-  color: ${({ theme }) => theme.colors.gray700};
-
-  gap: 4px;
-
-  margin-bottom: 4px;
-  margin-left: 4px;
-`;
