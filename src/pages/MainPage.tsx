@@ -6,10 +6,15 @@ import TraineeInfoPage from './TraineeInfoPage';
 import UserInfoPage from './UserInfoPage';
 import WriteLetterPage from './WriteLetterPage';
 import SetPasswordPage from './SetPasswordPage';
+import FinishPage from './FinishPage';
+import submitEmail from '../api/submitEmail';
+import useAppStore from '../store/appStore';
 
 const MainPage = () => {
 
   const [currentStep, setCurrentStep] = useState(0);
+
+  const appState = useAppStore();
 
   const addStep = () => {
     setCurrentStep(currentStep + 1);
@@ -55,8 +60,32 @@ const MainPage = () => {
       {
         currentStep === 4 && (
           <SetPasswordPage
-            addStep={addStep}
+            addStep={() => {
+              setCurrentStep(5);
+              
+              submitEmail({
+                senderZipCode: appState.senderZipCode,
+                senderAddr1: appState.senderAddr1,
+                senderAddr2: appState.senderAddr2,
+                senderName: appState.senderName,
+                relationship: appState.relationship,
+                title: appState.title,
+                contents: appState.contents,
+                password: appState.password,
+              });
+
+              appState.reset();
+            }}
             />
+        )
+      }
+      {
+        currentStep === 5 && (
+          <FinishPage
+            addStep={() => {
+              setCurrentStep(0);
+              }}
+          />
         )
       }
     </MainPageLayout>

@@ -18,6 +18,8 @@ export interface AppStore {
   setTitle: (title: string) => void;
   setContents: (contents: string) => void;
   setPassword: (password: string) => void;
+
+  reset: () => void;
 }
 
 const useAppStore = create<AppStore>((set) => ({
@@ -38,6 +40,18 @@ const useAppStore = create<AppStore>((set) => ({
   setTitle: (title: string) => set(() => ({ title })),
   setContents: (contents: string) => set(() => ({ contents })),
   setPassword: (password: string) => set(() => ({ password })),
+
+  reset: () =>
+    set(() => ({
+      senderName: '',
+      senderZipCode: '',
+      senderAddr1: '',
+      senderAddr2: '',
+      relationship: '',
+      title: '',
+      contents: '',
+      password: '',
+    })),
 }));
 
 export default useAppStore;

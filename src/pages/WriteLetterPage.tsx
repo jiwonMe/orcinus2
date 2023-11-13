@@ -76,8 +76,8 @@ const WriteLetterLayout = styled.div`
   }
 
   ${TextArea} {
-    max-height: calc(100vh - 400px);
-    min-height: calc(100vh - 400px);
+    max-height: calc(100vh - 450px);
+    min-height: calc(100vh - 450px);
   }
 `;
 
