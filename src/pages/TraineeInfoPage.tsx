@@ -27,17 +27,28 @@ const TraineeInfoPage = (props: TraineeInfoPageProps) => {
         <VerticalSpace size={16} />
         <Heading2>
           <span className='trainee-name'>
-          {traineeName || import.meta.env.VITE_TRAINEE_NAME}{' '}
+          {(
+            letterWritingPeriod !== '20210802-20210827'
+          ) ? traineeName : 'Loading...'
+        }{' '}
           </span>훈련생에게 <br /> 편지를 작성합니다</Heading2>
         <Description>생년월일 및 소속, 입대날짜를 확인해주세요</Description>
       </TitleBox>
       <DescriptionBox>
-        <Description>
-          <b>생년월일</b> {traineeBirth || import.meta.env.VITE_TRAINEE_BIRTH} <br />
-          <b>소속</b> {traineeAffiliation || import.meta.env.VITE_TRAINEE_AFFIL} <br />
-          <b>입대날짜</b> {enlistmentDate || '2023-10-30'}<br />
-          <b>수료예정날짜</b> {graduationDate || '2023-12-01' }<br />
-        </Description>
+        {
+          !traineeName ? (
+            <Description>
+              <b>Loading...</b>
+            </Description>
+          ) : (
+            <Description>
+              <b>생년월일</b> {traineeBirth || import.meta.env.VITE_TRAINEE_BIRTH} <br />
+              <b>소속</b> {traineeAffiliation || import.meta.env.VITE_TRAINEE_AFFIL} <br />
+              <b>입대날짜</b> {enlistmentDate || '2023-10-30'}<br />
+              <b>수료예정날짜</b> {graduationDate || '2023-12-01' }<br />
+            </Description>
+          )
+        }
       </DescriptionBox>
       <Description
         style={{

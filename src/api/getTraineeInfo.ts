@@ -37,6 +37,14 @@ const getTraineeInfo = async (params: getTraineeInfoParams) => {
   const letterWritingPeriod = getTextContent('인터넷 편지 작성기간');
   const traineeAffiliation = getTextContent('소속');
 
+  console.log('info', {
+    name,
+    enlistmentDate,
+    graduationDate,
+    letterWritingPeriod,
+    traineeAffiliation,
+  });
+
   return {
     name,
     enlistmentDate,
