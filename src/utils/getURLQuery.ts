@@ -9,8 +9,8 @@ const getURLQuery = () => {
   const traineeBirth = url.searchParams.get('traineeBirth');
 
   return {
-    memberSeq: memberSeq || import.meta.env.VITE_MEMBER_SEQ,
-    sodaeVal: sodaeVal || import.meta.env.VITE_SODAE_VAL,
+    memberSeq: memberSeq || import.meta.env.VITE_TRAINEE_MEMBER_SEQ,
+    sodaeVal: sodaeVal || import.meta.env.VITE_TRAINEE_SODAE_VAL,
     traineeName: traineeName || import.meta.env.VITE_TRAINEE_NAME,
     traineeBirth: traineeBirth || import.meta.env.VITE_TRAINEE_BIRTH,
   };
