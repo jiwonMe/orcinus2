@@ -19,6 +19,8 @@ const MainPage = () => {
 
   const appState = useAppStore();
 
+  const { letterWritingPeriod } = appState;
+
   const addStep = () => {
     setCurrentStep(currentStep + 1);
   }
@@ -77,7 +79,11 @@ const MainPage = () => {
             <Button
               variant="primary"
               onClick={addStep}
-            >시작하기</Button>
+              disabled={letterWritingPeriod === '20210802-20210827' || letterWritingPeriod.length === 0}
+            >{
+              letterWritingPeriod === '20210802-20210827' || letterWritingPeriod.length === 0 ?
+              '서버 접속 중' : '시작하기'
+            }</Button>
           </>
         )
       }
