@@ -57,7 +57,7 @@ const TraineeInfoPage = (props: TraineeInfoPageProps) => {
         }}
 
         onClick={() => {
-          alert('다른 훈련생은 아직 준비중입니다. park@jiwon.me로 연락주세요');
+          alert('요청에 따라 훈련생 별로 링크를 만들어 드리고 있습니다. park@jiwon.me로 연락주세요.');
         }}
       >
         제가 쓰려는 훈련생이 아니에요.
