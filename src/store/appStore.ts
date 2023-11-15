@@ -2,6 +2,17 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 export interface AppStore {
+  // trainee
+  traineeName: string;
+  traineeBirth: string;
+  memberSeq: string;
+  enlistmentDate: string;
+  graduationDate: string;
+  letterWritingPeriod: string;
+  sodaeVal: string;
+  traineeAffiliation: string;
+
+  // sender
   senderName: string;
   senderZipCode: string;
   senderAddr1: string;
@@ -10,6 +21,18 @@ export interface AppStore {
   title: string;
   contents: string;
   password: string;
+
+  // actions
+  setTraineeInfo: (info: {
+    traineeName: string;
+    traineeBirth: string;
+    memberSeq: string;
+    enlistmentDate: string;
+    graduationDate: string;
+    letterWritingPeriod: string;
+    sodaeVal: string;
+    traineeAffiliation: string;
+  }) => void;
 
   setSenderName: (senderName: string) => void;
   setSenderZipCode: (senderZipCode: string) => void;
@@ -25,6 +48,15 @@ export interface AppStore {
 
 const useAppStore = create<AppStore>()(
   devtools((set) => ({
+    traineeName: '',
+    traineeBirth: '',
+    memberSeq: '',
+    enlistmentDate: '',
+    graduationDate: '',
+    letterWritingPeriod: '',
+    sodaeVal: '',
+    traineeAffiliation: '',
+
     senderName: '',
     senderZipCode: '',
     senderAddr1: '',
@@ -33,6 +65,27 @@ const useAppStore = create<AppStore>()(
     title: '',
     contents: '',
     password: '',
+
+    setTraineeInfo: (info: {
+      traineeName: string;
+      traineeBirth: string;
+      memberSeq: string;
+      enlistmentDate: string;
+      graduationDate: string;
+      letterWritingPeriod: string;
+      sodaeVal: string;
+      traineeAffiliation: string;
+    }) =>
+      set(() => ({
+        traineeName: info.traineeName,
+        traineeBirth: info.traineeBirth,
+        memberSeq: info.memberSeq,
+        enlistmentDate: info.enlistmentDate,
+        graduationDate: info.graduationDate,
+        letterWritingPeriod: info.letterWritingPeriod,
+        sodaeVal: info.sodaeVal,
+        traineeAffiliation: info.traineeAffiliation,
+      })),
 
     setSenderName: (senderName: string) => set(() => ({ senderName })),
     setSenderZipCode: (senderZipCode: string) => set(() => ({ senderZipCode })),

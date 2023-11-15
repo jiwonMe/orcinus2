@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Description } from '../designs/typographys';
 import Button from '../components/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TraineeInfoPage from './TraineeInfoPage';
 import UserInfoPage from './UserInfoPage';
 import WriteLetterPage from './WriteLetterPage';
@@ -10,6 +10,8 @@ import FinishPage from './FinishPage';
 import submitEmail from '../api/submitEmail';
 import useAppStore from '../store/appStore';
 import VerticalSpace from '../components/VerticalSpace';
+import getTraineeInfo from '../api/getTraineeInfo';
+import getURLQuery from '../utils/getURLQuery';
 
 const MainPage = () => {
 
@@ -20,6 +22,38 @@ const MainPage = () => {
   const addStep = () => {
     setCurrentStep(currentStep + 1);
   }
+
+  useEffect(() => {
+
+    const { memberSeq, sodaeVal, traineeName, traineeBirth } = getURLQuery();
+
+    async function fetchTraineeInfo() {
+      const {
+        name,
+        enlistmentDate,
+        graduationDate,
+        letterWritingPeriod,
+        traineeAffiliation,
+      } = await getTraineeInfo({
+        traineeName: traineeName || import.meta.env.VITE_TRAINEE_NAME,
+        traineeBirth: traineeBirth || import.meta.env.VITE_TRAINEE_BIRTH,
+        memberSeq: memberSeq || import.meta.env.VITE_TRAINEE_MEMBER_SEQ,
+      });
+
+      appState.setTraineeInfo({
+        traineeName: name || import.meta.env.VITE_TRAINEE_NAME,
+        traineeBirth: traineeBirth || import.meta.env.VITE_TRAINEE_BIRTH,
+        memberSeq: memberSeq || import.meta.env.VITE_TRAINEE_MEMBER_SEQ,
+        sodaeVal: sodaeVal || import.meta.env.VITE_TRAINEE_SODAE_VAL,
+        enlistmentDate: enlistmentDate || import.meta.env.VITE_TRAINEE_ENLISTMENT_DATE,
+        graduationDate: graduationDate || import.meta.env.VITE_TRAINEE_GRADUATION_DATE,
+        letterWritingPeriod: letterWritingPeriod || import.meta.env.VITE_TRAINEE_LETTER_WRITING_PERIOD,
+        traineeAffiliation: traineeAffiliation || import.meta.env.VITE_TRAINEE_AFFIL,
+      });
+    }
+
+    fetchTraineeInfo();
+  }, [])
 
   return (
     <MainPageLayout>

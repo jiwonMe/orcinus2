@@ -59,6 +59,7 @@ const UserInfoPage = (props: UserInfoPageProps) => {
         }}
       >
         <Input
+          readOnly
           value={address}
           onFocus={() => {
             setOpenPostCode(true);

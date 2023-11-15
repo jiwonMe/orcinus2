@@ -3,12 +3,21 @@ import Button from '../components/Button';
 import { Description, Heading2 } from '../designs/typographys';
 import { FiMail } from 'react-icons/fi';
 import VerticalSpace from '../components/VerticalSpace';
+import useAppStore from '../store/appStore';
 
 interface TraineeInfoPageProps {
   addStep: () => void;
 }
 
 const TraineeInfoPage = (props: TraineeInfoPageProps) => {
+  const {
+    traineeName,
+    traineeBirth,
+    enlistmentDate,
+    graduationDate,
+    letterWritingPeriod,
+    traineeAffiliation,
+  } = useAppStore();
 
   return (
     <TraineeInfoPageLayout>
@@ -18,16 +27,16 @@ const TraineeInfoPage = (props: TraineeInfoPageProps) => {
         <VerticalSpace size={16} />
         <Heading2>
           <span className='trainee-name'>
-          {import.meta.env.VITE_TRAINEE_NAME}{' '}
+          {traineeName || import.meta.env.VITE_TRAINEE_NAME}{' '}
           </span>훈련생에게 <br /> 편지를 작성합니다</Heading2>
         <Description>생년월일 및 소속, 입대날짜를 확인해주세요</Description>
       </TitleBox>
       <DescriptionBox>
         <Description>
-          <b>생년월일</b> {import.meta.env.VITE_TRAINEE_BIRTH} <br />
-          <b>소속</b> {import.meta.env.VITE_TRAINEE_AFFIL} <br />
-          <b>입대날짜</b> 2023-10-30 <br />
-          <b>수료예정날짜</b> 2023-12-01 <br />
+          <b>생년월일</b> {traineeBirth || import.meta.env.VITE_TRAINEE_BIRTH} <br />
+          <b>소속</b> {traineeAffiliation || import.meta.env.VITE_TRAINEE_AFFIL} <br />
+          <b>입대날짜</b> {enlistmentDate || '2023-10-30'}<br />
+          <b>수료예정날짜</b> {graduationDate || '2023-12-01' }<br />
         </Description>
       </DescriptionBox>
       <Description
@@ -45,9 +54,26 @@ const TraineeInfoPage = (props: TraineeInfoPageProps) => {
       <Button
         variant="primary"
         onClick={() => {
-          // if over 2023-11-29 17:00:00, show alert
+          // if over letter writing period, show alert
+          // format: 2023년 11월 13일 09시 ~ 2023년 11월 29일 17시
+
+          const transformKoreanTimeToEnglishTime = (koreanTime: string) => {
+            const year = koreanTime.split('년')[0];
+            const month = koreanTime.split('년')[1].split('월')[0];
+            const day = koreanTime.split('월')[1].split('일')[0];
+            const hour = koreanTime.split('일')[1].split('시')[0];
+            const minute = koreanTime.split('시')[1].split('분')[0] || '00';
+
+            return `${year}-${month}-${day} ${hour}:${minute}`;
+          }
+
           const now = new Date();
-          const target = new Date('2023-11-29 17:00:00');
+          // parse target date
+          const targetDate = letterWritingPeriod?.split('~')[1].trim()
+          const target = new Date(transformKoreanTimeToEnglishTime(targetDate));
+
+          console.log(now, target);
+
           if (now > target) {
             alert('편지 작성이 마감되었습니다');
             return;
